@@ -51,9 +51,9 @@
     "rollup-plugin-typescript": "^1.0.1",
     "rollup-plugin-uglify": "^6.0.3",
     "rollup-watch": "^4.3.1",
-    "tslib": "^1.10.0",
     "ts-jest": "^23.10.5",
     "ts-loader": "^6.2.0",
+    "tslib": "^1.10.0",
     "tslint": "^5.20.0",
     "tslint-eslint-rules": "^5.4.0",
     "tslint-react": "^3.6.0",
@@ -83,5 +83,8 @@
       "text",
       "text-summary"
     ]
+  },
+  "dependencies": {
+    "react-transition-group": "^4.3.0"
   }
 }
