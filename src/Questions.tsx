@@ -1,6 +1,7 @@
 import React, {useRef, useState, FC, ReactElement} from "react";
 import { Transition } from "react-transition-group";
 import { sleep } from "./sleep";
+import './index.scss';
 
 interface IProps {
   questions: any[];
