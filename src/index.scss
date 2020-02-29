@@ -4,21 +4,35 @@
   align-items: center;
   width: 100%;
   padding: 0 12px 24px 12px;
-  opacity: 1;
   transition: all 500ms cubic-bezier(0.78, 0.14, 0.15, 0.86);
-  
-  &.entering,
-  &.exiting,
-  &.exited {
-    opacity: 0;
-    filter: blur(6px);
-  }
+
   &.entering {
     margin-right: -400px;
   }
   &.exiting,
   &.exited {
     margin-left: -400px;
+  }
+  
+  &.blur-fade {
+    opacity: 1;
+    &.entering,
+    &.exiting,
+    &.exited {
+      opacity: 0;
+      filter: blur(6px);
+    }
+  }
+
+  &.grow-fade {
+    opacity: 1;
+    transform: scale(1);
+    &.entering,
+    &.exiting,
+    &.exited {
+      opacity: 0;
+      transform: scale(0.4);
+    }
   }
 }
 

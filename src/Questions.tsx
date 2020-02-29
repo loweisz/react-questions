@@ -7,9 +7,10 @@ interface IProps {
   questions: any[];
   finishQuestionnaire: () => void;
   children: (nextCard: any, currentIndex: number) => ReactElement;
+  animation?: "blur-fade" | "grow-fade";
 }
 
-const Questions: FC<IProps> = ({ questions, finishQuestionnaire, children }) => {
+const Questions: FC<IProps> = ({ questions, finishQuestionnaire, children, animation }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isIn, setIsIn] = useState(true);
 
@@ -53,7 +54,7 @@ const Questions: FC<IProps> = ({ questions, finishQuestionnaire, children }) => 
       {currentQuestion && (
         <Transition in={isIn} timeout={500}>
           {(status: any) => (
-            <div className={`animateur ${status}`}>
+            <div className={`animateur ${status} ${animation || "blur-fade"}`}>
               <div className="content">
                 {children(nextCard, currentIndex)}
               </div>
