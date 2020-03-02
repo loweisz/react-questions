@@ -1,1 +1,75 @@
-TODOs
+[![License](https://img.shields.io/npm/l/react-questions.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+![Version](https://img.shields.io/npm/v/react-questions.svg?style=flat-square)
+![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/react-questions.svg?style=flat-square)
+![npm type definitions](https://img.shields.io/npm/types/react-questions.svg?style=flat-square)
+
+![](logo.png) 
+
+# ❓ react-questions ❓
+
+The perfect package for any kind of survey, questions or nicely animated stream of cards or anything you want
+
+## Getting Started 🏂
+### Install
+```
+  npm i react-questions
+```
+
+### Import it 🖥️
+```
+import Questions from 'react-questions'
+```
+
+### Wrap your custom card-component with it 🔑
+
+```
+import Questions from 'react-questions'
+
+...
+
+const finish = () => {
+  /* called when finished */
+}
+
+const questions = [
+  {id: 1, question: "What's your name?"},
+  {id: 2, question: "How old are you?"},
+]
+
+return (
+  <Questions questions={[1,2]} animation="blur-fade">
+    {(submit, currentQuestion) => (
+      <div className="your-custom-component" onClick={submit}>
+        <button onClick={submit}>Submit</button>
+      </div>
+    )}
+  </Questions>
+)
+
+### Note: 
+Currently the `Questions`-component is not collecting the answers for you. THe idea is that you collect it by yourself with hook into the submit function and collect your answers by yourself.
+
+```
+
+### Supported properties
+```
+  questions: any[];
+  finishQuestionnaire: () => void;
+  children: (nextCard: any, currentIndex: number) => ReactElement;
+  animation?: "blur-fade" | "grow-fade";
+```
+
+#### questions: Element (required)
+A list of your questions. The shape of the elements is up to you. It just needs to be at least one element. The object will be passed to the render function as `currentQuestion`
+
+#### finishQuestionnaire(): void (optional)
+This function will be called when the questionnaire is done.
+
+#### children(nextCard: any, currentIndex: number): ReactElement
+The function that the component will wrap. It will pass on the `nextCard`. Which is one of the objects provided by the questions array.
+
+#### animation: "blur-fade" | "grow-fade" (optional)
+The type of animations. Currently two different types provided. 
+Feel free to play with them 
+
+
