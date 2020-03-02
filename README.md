@@ -7,7 +7,8 @@
 
 # ❓ react-questions ❓
 
-The perfect package for any kind of survey, questions or nicely animated stream of cards or anything you want
+The perfect package for any kind of survey, questions card etc.
+It will wrap your components with a nicely animated transition and gives you the possibility to customize your content freely.
 
 ## Getting Started 🏂
 ### Install
@@ -37,7 +38,7 @@ const questions = [
 ]
 
 return (
-  <Questions questions={[1,2]} animation="blur-fade">
+  <Questions questions={questions} animation="blur-fade">
     {(submit, currentQuestion) => (
       <div className="your-custom-component" onClick={submit}>
         <button onClick={submit}>Submit</button>
@@ -54,7 +55,7 @@ Currently the `Questions`-component is not collecting the answers for you. THe i
 ### Supported properties
 ```
   questions: any[];
-  finishQuestionnaire: () => void;
+  onFinish: () => void;
   children: (nextCard: any, currentIndex: number) => ReactElement;
   animation?: "blur-fade" | "grow-fade";
 ```
@@ -62,8 +63,8 @@ Currently the `Questions`-component is not collecting the answers for you. THe i
 #### questions: Element (required)
 A list of your questions. The shape of the elements is up to you. It just needs to be at least one element. The object will be passed to the render function as `currentQuestion`
 
-#### finishQuestionnaire(): void (optional)
-This function will be called when the questionnaire is done.
+#### onFinish(): void (optional)
+This function will be called when the set of questions is done.
 
 #### children(nextCard: any, currentIndex: number): ReactElement
 The function that the component will wrap. It will pass on the `nextCard`. Which is one of the objects provided by the questions array.

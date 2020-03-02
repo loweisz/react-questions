@@ -5,12 +5,12 @@ import './index.scss';
 
 interface IProps {
   questions: any[];
-  finishQuestionnaire: () => void;
+  onFinish: () => void;
   children: (nextCard: any, currentIndex: number) => ReactElement;
   animation?: "blur-fade" | "grow-fade";
 }
 
-const Questions: FC<IProps> = ({ questions, finishQuestionnaire, children, animation }) => {
+const Questions: FC<IProps> = ({ questions, onFinish, children, animation }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isIn, setIsIn] = useState(true);
 
@@ -42,11 +42,12 @@ const Questions: FC<IProps> = ({ questions, finishQuestionnaire, children, anima
     }
     // finally update the index
     setCurrentIndex(nextQuestionIndex);
-    window.scrollTo(0,0);
   };
 
   const onFinishQuestionnaire = () => {
-    finishQuestionnaire();
+    if (onFinish) {
+      onFinish();
+    }
   };
 
   return (
